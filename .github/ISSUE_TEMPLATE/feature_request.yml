@@ -1,0 +1,108 @@
+name: Feature request
+description: Suggest a new feature or an improvement to an existing one
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement. Focus on the problem you're trying to solve — that helps us find the best solution, which may differ from the one you have in mind.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have searched existing issues and this has not already been requested
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or need
+      description: What problem are you trying to solve, or what can't you do today?
+      placeholder: As a [type of user], I want to [do something] so that [benefit]. Currently I can't because...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe what you'd like to happen. Be as specific as you can.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: How will we know this is done? List the conditions that must be met.
+      placeholder: |
+        - [ ] Users can ...
+        - [ ] When X happens, Y is shown
+        - [ ] ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other solutions or workarounds you've thought about or are using now.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this to you?
+      options:
+        - High — blocking work or a key business need
+        - Medium — would significantly improve things
+        - Low — nice to have
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area affected
+      description: Which part of the system does this relate to?
+      multiple: true
+      options:
+        - Frontend / UI
+        - Admin / back office
+        - API
+        - Integrations
+        - Performance
+        - Documentation
+        - Other
+    validations:
+      required: false
+
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Mockups or examples
+      description: Drag in sketches, screenshots or links to examples elsewhere that illustrate the idea.
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Deadlines, stakeholders, related issues or anything else that's useful to know.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd be willing to help implement this
+          required: false
+
