@@ -38,20 +38,41 @@ jobs:
           PUSHED_BRANCH: ${{ github.ref_name }}
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         run: |
-          next=$(python3 -c 'import json; print(json.load(open("stable/version.json"))["next"])')
-          git check-ref-format --branch "$next" >/dev/null
-          if [[ "$next" == "$DEFAULT_BRANCH" ]]; then
-            echo "version.json next must name a branch other than $DEFAULT_BRANCH" >&2
-            exit 1
+          next=$(python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          version_path = Path("stable/version.json")
+          if version_path.is_file():
+              with version_path.open() as version_file:
+                  next_branch = json.load(version_file).get("next")
+          else:
+              next_branch = None
+          if next_branch is None:
+              next_branch = ""
+          if not isinstance(next_branch, str):
+              raise SystemExit("version.json next must be a branch name")
+          print(next_branch)
+          PY
+          )
+          if [[ -n "$next" ]]; then
+            git check-ref-format --branch "$next" >/dev/null
+            if [[ "$next" == "$DEFAULT_BRANCH" ]]; then
+              echo "version.json next must name a branch other than $DEFAULT_BRANCH" >&2
+              exit 1
+            fi
           fi
-          if [[ "$PUSHED_BRANCH" == "$DEFAULT_BRANCH" || "$PUSHED_BRANCH" == "$next" ]]; then
+          echo "next=$next" >> "$GITHUB_OUTPUT"
+          if [[ "$PUSHED_BRANCH" == "$DEFAULT_BRANCH" ]]; then
             echo 'publish=true' >> "$GITHUB_OUTPUT"
-            echo "next=$next" >> "$GITHUB_OUTPUT"
-            if [[ "$PUSHED_BRANCH" == "$next" ]]; then
+            if [[ -n "$next" ]]; then
               echo 'build_next=true' >> "$GITHUB_OUTPUT"
             else
               echo 'build_next=false' >> "$GITHUB_OUTPUT"
             fi
+          elif [[ -n "$next" && "$PUSHED_BRANCH" == "$next" ]]; then
+            echo 'publish=true' >> "$GITHUB_OUTPUT"
+            echo 'build_next=true' >> "$GITHUB_OUTPUT"
           else
             echo 'publish=false' >> "$GITHUB_OUTPUT"
             echo "Skipping documentation push on $PUSHED_BRANCH"
@@ -68,7 +89,7 @@ jobs:
       - name: Configure GitHub Pages
         if: steps.branch.outputs.publish == 'true'
         id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Set up Python
         if: steps.branch.outputs.publish == 'true'
@@ -99,12 +120,6 @@ jobs:
           ALLSKY_DOCS_SITE_URL: ${{ steps.pages.outputs.base_url }}/next/
           ALLSKY_DOCS_ASSET_PATH: ${{ steps.pages.outputs.base_path }}/next/assets
         run: bash next/docs/allsky_docs.sh build "$GITHUB_WORKSPACE/site/next" "$ALLSKY_DOCS_ASSET_PATH"
-
-      - name: Show next release placeholder
-        if: steps.branch.outputs.publish == 'true' && steps.branch.outputs.build_next != 'true'
-        run: |
-          mkdir -p site/next
-          cp stable/docs/next_release_pending.html site/next/index.html
 
       - name: Disable Jekyll processing
         if: steps.branch.outputs.publish == 'true'
