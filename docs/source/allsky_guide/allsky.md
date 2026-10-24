@@ -20,7 +20,7 @@
 
     Replace `USERNAME` with the account you actually use on the Pi.
 
-# TEST
+# TEST 11
 
 # Installing Allsky
 
