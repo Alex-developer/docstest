@@ -1,30 +1,4 @@
 {
   "version": "v2026.10.01",
-  "label": "Available now",
-  "notice_revision": 1,
-  "note": "A major update to Allksy in this recommended release.",
-  "key_changes": [
-    "Improved User Interface",
-    "Easier to use Overlay editor",
-    "Built in package manager for managing modules"
-  ],
-  "release_notes_url": "https://allskyteam.github.io/allsky/",
-  "remind_after_hours": 24,
-  "next1": "v2026.10.01_01",
-  "upcoming": {
-    "version": "v2026.10.01_01",
-    "label": "Coming soon",
-    "notice_revision": 1,
-    "status": "announced",
-    "expected": "1st November 2026",
-    "message": "Bug fixes and improvements.",
-    "key_changes": [
-      "Earlier release notification",
-      "Esier to use release documentation",
-      "Many bug fixes and improvements"
-    ],
-    "docs_url": "https://allskyteam.github.io/allsky/next",
-    "docs_link_text": "Read more about the upcoming release",
-    "remind_after_hours": 24
-  }
+  "next": "v2026.10.01_01"
 }
