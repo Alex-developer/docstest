@@ -20,6 +20,8 @@
 
     Replace `USERNAME` with the account you actually use on the Pi.
 
+# TEST
+
 # Installing Allsky
 
 Installing Allsky is usually straightforward, but it goes much more smoothly if a few basic things are already in place. This page walks through the normal installation process, covers what to do if an older copy of Allsky is already present, and explains the main prompts you are likely to see during installation.
