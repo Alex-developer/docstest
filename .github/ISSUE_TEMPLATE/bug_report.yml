@@ -1,0 +1,149 @@
+name: Bug report
+description: Report something that isn't working as expected
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill in as much detail as you can — a clear, reproducible report is the fastest way to a fix.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have searched existing issues and this has not already been reported
+          required: true
+        - label: I can reproduce this on the latest release / main branch
+          required: false
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: A clear, one or two sentence description of the bug.
+      placeholder: When I do X, Y happens instead of Z.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The minimal steps needed to trigger the bug.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Enter '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: What should have happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: What actually happened? Include any error messages shown.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How badly does this affect you?
+      options:
+        - Critical — system down, data loss or security issue
+        - High — major feature broken, no workaround
+        - Medium — feature broken, workaround available
+        - Low — cosmetic or minor inconvenience
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does it happen?
+      options:
+        - Every time
+        - Intermittently
+        - Happened once
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment-type
+    attributes:
+      label: Environment
+      options:
+        - Production
+        - Staging
+        - Development / local
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit
+      description: Release tag, version number or commit SHA where the bug occurs.
+      placeholder: e.g. v2.4.1 or a1b2c3d
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment-details
+    attributes:
+      label: Environment details
+      description: OS, browser, runtime versions, database, relevant config or extensions.
+      placeholder: |
+        - OS:
+        - Browser (if applicable):
+        - Runtime / language version:
+        - Database:
+        - Other relevant details:
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / stack trace
+      description: Paste any relevant log output. This is automatically formatted as code, so no backticks are needed. Remove secrets, tokens and personal data first.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Screenshots or recordings
+      description: Drag and drop images or videos here if they help explain the problem.
+    validations:
+      required: false
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround
+      description: Have you found any way to avoid the problem in the meantime?
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: When did this start? Any recent changes, deployments or related issues?
+    validations:
+      required: false
+
