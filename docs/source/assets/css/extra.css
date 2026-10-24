@@ -1,0 +1,381 @@
+:root {
+  --red: #e53935;
+  --orange: #fb8c00;
+  --green: #43a047;
+  --blue: #1e88e5;
+
+  --settings-colour: #2f2f9e;
+}
+
+body[data-md-color-scheme="slate"] {
+  --red: #ff5250;  
+  --settings-colour: #6262ee;
+}
+
+.red {
+  color: var(--red);
+}
+
+.orange {
+  color: var(--orange);
+}
+
+.green {
+  color: var(--green);
+}
+
+.blue {
+  color: var(--blue);
+}
+
+img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.settings-header {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  text-align: center !important;
+}
+
+.settings-header-note {
+  background-color: #ccc;
+  font-weight: normal;
+}
+
+.web-ui-setting {
+  color: rgb(47, 47, 184);
+  font-weight: bold;
+}
+
+
+/* Width classes for tables */
+.w-5p {
+  width: 5% !important;
+}
+.w-10p {
+  width: 10% !important;
+}
+.w-15p {
+  width: 15% !important;
+}
+.w-20p {
+  width: 20% !important;
+}
+.w-25p {
+  width: 25% !important;
+}
+.w-30p {
+  width: 30% !important;
+}
+.w-100 {
+  width: 100px !important;
+}
+
+.w-150 {
+  width: 150px !important;
+}
+
+.w-200 {
+  width: 200px !important;
+}
+
+/* Allow table cells to wrap */
+td, th {
+  white-space: wrap !important;
+}
+
+/* Reduce cell padding */
+.md-typeset table:not([class]) td {
+    padding: .9em 1em !important;
+}
+
+/* Highjack markdown 'mark' for settings indicator */
+.md-typeset mark {
+  color: var(--settings-colour) !important;
+  font-weight: bold !important;
+  background-color: transparent !important;
+}
+
+/* Add external link icon to links marked with class "external" */
+a[external="true"]::after {
+    font-family: "Font Awesome 6 Free";
+    content: "\f35d";
+    font-weight: 900;
+    margin-left: 6px;
+    font-size: 0.85em;
+    vertical-align: middle;
+    opacity: 0.7;
+}
+
+/* Make the table wrapper full width */
+.md-typeset .md-typeset__table {
+  width: 100%;
+}
+
+/* Make Markdown tables behave like real tables and span 100% */
+.md-typeset table:not([class]) {
+  display: table;          /* override Material's display:block */
+  width: 100%;
+  table-layout: fixed;     /* or 'auto' if you prefer natural widths */
+  border-collapse: collapse;
+}
+
+/* Optional: make the first/second columns take specific proportions */
+.md-typeset table:not([class]) th:first-child,
+.md-typeset table:not([class]) td:first-child {
+  width: 18%;
+  white-space: nowrap;
+}
+
+.md-typeset table:not([class]) td:first-child {
+  font-style: italic;
+  font-weight: bolder;
+}
+
+.web-ui-setting {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #00009b;
+  font-weight: bold;
+  font-size: 95%;
+}
+
+/* Left sidebar: top-level section headers (Allsky Guide, Installation, etc) */
+.md-sidebar--primary 
+.md-nav--primary 
+.md-nav__list 
+> .md-nav__item--nested 
+> label.md-nav__link {
+  font-weight: 800 !important;
+}
+
+/* Left sidebar: top-level pages within the current section (FAQ, Known Issues, etc) */
+.md-sidebar--primary 
+.md-nav--primary 
+.md-nav[data-md-level="1"] 
+> .md-nav__list 
+> .md-nav__item 
+> a.md-nav__link {
+  font-weight: 800 !important;
+}
+
+/** Editor Setting styles */
+.shSetting, .editorShell, .editorShellComment, .editorSetting, .editorString, .editorNum, .editorSign, .editorBool, .editorSpecial, .editorBracketsJSON {
+  font-family: monospace;
+  background-color: #272822;
+  padding: 1px 2px;
+}
+
+.editorSetting {
+  color: #a6e22e;
+}
+.editorString {
+  color: #e6db74;
+}
+.editorNum, .editorBool {
+  color: #deb1ff;
+}
+.editorSpecial {
+  color: white;
+}
+.editorBracketsJSON {
+  color: rgb(253, 151, 31);
+}
+
+/* Release notes: quiet, stacked changes with a clear type marker. */
+.md-typeset .release-notes-panel {
+  background: #f8fafc;
+  border: 1px solid #e5eaf1;
+  border-radius: .7rem;
+  border-top: 3px solid #1682db;
+  margin: .6rem 0 1.5rem;
+  max-width: 42rem;
+  padding: .4rem 1rem;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .release-notes-panel {
+  background: #111722;
+  border-color: #263244;
+  border-top-color: #1682db;
+}
+
+.md-typeset .release-note {
+  --note-accent: #64748b;
+  --note-tint: #e9eef4;
+  --note-text: #475569;
+  border-left: 2px solid var(--note-accent);
+  margin: .8rem 0;
+  padding: 0 .65rem;
+}
+
+.md-typeset .release-note--new {
+  --note-accent: #18a866;
+  --note-tint: #dff7ea;
+  --note-text: #146b43;
+}
+
+.md-typeset .release-note--improved {
+  --note-accent: #3b91ee;
+  --note-tint: #e3f1ff;
+  --note-text: #17639e;
+}
+
+.md-typeset .release-note--fixed {
+  --note-accent: #ed5261;
+  --note-tint: #ffe8eb;
+  --note-text: #a5283a;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .release-note {
+  --note-tint: #283343;
+  --note-text: #aab9ce;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .release-note--new {
+  --note-tint: #173d30;
+  --note-text: #52d894;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .release-note--improved {
+  --note-tint: #17314e;
+  --note-text: #79b9ff;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .release-note--fixed {
+  --note-tint: #45242d;
+  --note-text: #ff8490;
+}
+
+.md-typeset .release-note .release-note-badges {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+}
+
+.md-typeset .release-note .release-note-badge {
+  background: var(--note-tint);
+  border-radius: 1rem;
+  color: var(--note-text);
+  display: inline-block;
+  font-size: .56rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  line-height: 1.6;
+  padding: 0 .42rem;
+}
+
+.md-typeset .release-note .release-note-badge::before {
+  background: var(--note-accent);
+  border-radius: 50%;
+  content: "";
+  display: inline-block;
+  height: .3rem;
+  margin-right: .3rem;
+  vertical-align: .05rem;
+  width: .3rem;
+}
+
+.md-typeset .release-note .release-note-area {
+  background: #e9eef4;
+  border-radius: 1rem;
+  color: #475569;
+  display: inline-block;
+  font-size: .56rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  line-height: 1.6;
+  padding: 0 .45rem;
+  text-transform: uppercase;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .release-note .release-note-area {
+  background: #273445;
+  color: #b5c5d8;
+}
+
+.md-typeset .release-note p {
+  margin: 0;
+}
+
+.md-typeset .release-note .release-note-title {
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-top: .18rem;
+}
+
+.md-typeset .release-note .release-note-summary {
+  color: var(--md-default-fg-color--light);
+  font-size: .7rem;
+  line-height: 1.45;
+  margin-top: .1rem;
+}
+
+.md-typeset .release-note li.release-note-summary {
+  margin-left: 1rem;
+}
+
+.md-typeset .release-note .release-note-source {
+  font-size: .6rem;
+  margin-top: .2rem;
+}
+
+.md-typeset .release-notes-technical {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  font-size: .72rem;
+  padding: .45rem 0;
+}
+
+.md-typeset .release-notes-technical summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.md-typeset .release-notes-technical h4 {
+  margin: .75rem 0 .25rem;
+}
+
+.md-typeset .release-notes-technical ul {
+  margin: 0 0 .5rem;
+}
+
+/* Custom Material block: !!! pullquote "" */
+.md-typeset .admonition.pullquote {
+  background: transparent;
+  border: 0;
+  border-left: .15rem solid #31cdb7;
+  border-radius: 0;
+  box-shadow: none;
+  color: #7089a1;
+  font-size: .8rem;
+  margin: 1.2rem 0;
+  max-width: 36rem;
+  padding: .45rem 0 .45rem 1.2rem;
+}
+
+.md-typeset .admonition.pullquote p {
+  margin: 0;
+}
+
+.md-typeset .admonition.pullquote p:first-child {
+  font-style: italic;
+}
+
+.md-typeset .admonition.pullquote p + p {
+  color: #4d6c88;
+  font-size: .72rem;
+  font-style: normal;
+  font-weight: 600;
+  margin-top: .4rem;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .admonition.pullquote {
+  color: #a9bbce;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .admonition.pullquote p + p {
+  color: #8fb1d0;
+}
